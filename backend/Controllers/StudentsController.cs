@@ -22,7 +22,12 @@ namespace StudentManagementSystem.Controllers
         {
             var students = await _service.GetAllStudentsAsync();
 
-            return Ok(students);
+            return Ok(new
+            {
+                success = true,
+                message = "Students fetched successfully",
+                data = students
+            });
         }
 
         [HttpGet("{id}")]
@@ -31,28 +36,75 @@ namespace StudentManagementSystem.Controllers
             var student = await _service.GetStudentByIdAsync(id);
 
             if (student == null)
-                return NotFound();
+            {
+                return NotFound(new
+                {
+                    success = false,
+                    message = "Student not found"
+                });
+            }
 
-            return Ok(student);
+            return Ok(new
+            {
+                success = true,
+                message = "Student fetched successfully",
+                data = student
+            });
         }
 
         [HttpPost]
         public async Task<IActionResult> Add(Student student)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Invalid student data",
+                    errors = ModelState
+                });
+            }
+
             var result = await _service.AddStudentAsync(student);
 
-            return Ok(result);
+            return Ok(new
+            {
+                success = true,
+                message = "Student added successfully",
+                data = result
+            });
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, Student student)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Invalid student data",
+                    errors = ModelState
+                });
+            }
+
             var result = await _service.UpdateStudentAsync(id, student);
 
             if (result == null)
-                return NotFound();
+            {
+                return NotFound(new
+                {
+                    success = false,
+                    message = "Student not found"
+                });
+            }
 
-            return Ok(result);
+            return Ok(new
+            {
+                success = true,
+                message = "Student updated successfully",
+                data = result
+            });
         }
 
         [HttpDelete("{id}")]
@@ -61,9 +113,19 @@ namespace StudentManagementSystem.Controllers
             var result = await _service.DeleteStudentAsync(id);
 
             if (!result)
-                return NotFound();
+            {
+                return NotFound(new
+                {
+                    success = false,
+                    message = "Student not found"
+                });
+            }
 
-            return Ok("Student Deleted");
+            return Ok(new
+            {
+                success = true,
+                message = "Student deleted successfully"
+            });
         }
     }
 }

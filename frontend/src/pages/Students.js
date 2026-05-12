@@ -20,7 +20,7 @@ function Students() {
 
       const res = await API.get("/students");
 
-      setStudents(res.data);
+      setStudents(res.data.data);
 
     } catch (err) {
 

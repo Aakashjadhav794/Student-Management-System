@@ -292,3 +292,4 @@ S:\Programs\Project\Student Management System\backend\obj\Debug\net8.0\refint\St
 S:\Programs\Project\Student Management System\backend\obj\Debug\net8.0\StudentManagementSystem.pdb
 S:\Programs\Project\Student Management System\backend\obj\Debug\net8.0\StudentManagementSystem.genruntimeconfig.cache
 S:\Programs\Project\Student Management System\backend\obj\Debug\net8.0\ref\StudentManagementSystem.dll
+S:\Programs\Project\Student Management System\backend\obj\Debug\net8.0\StudentManagementSystem.sourcelink.json

@@ -66,7 +66,7 @@ function Login() {
         <div className="text-center mb-4">
 
           <h2 className="fw-bold">
-            Student Management
+            Student Management System
           </h2>
 
           <p className="text-muted mb-0">
@@ -74,8 +74,6 @@ function Login() {
           </p>
 
         </div>
-
-        {/* FORM */}
 
         <form onSubmit={login}>
 
@@ -91,6 +89,7 @@ function Login() {
               className="form-control"
               placeholder="Enter username"
               onChange={handleChange}
+              required
             />
 
           </div>
@@ -107,6 +106,7 @@ function Login() {
               className="form-control"
               placeholder="Enter password"
               onChange={handleChange}
+              required
             />
 
           </div>
