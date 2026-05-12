@@ -29,7 +29,7 @@ function EditStudent() {
 
       const res = await API.get(`/students/${id}`);
 
-      setStudent(res.data);
+      setStudent(res.data.data);
 
     } catch (err) {
 
@@ -108,8 +108,6 @@ function EditStudent() {
           </p>
 
         </div>
-
-        {/* FORM */}
 
         <form
           onSubmit={(e) => {
